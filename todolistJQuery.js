@@ -2,7 +2,7 @@ const todoForm = $("#todo-form");
 const todoInput = $("#todo-form #todo-input");
 
 const countText = $("#count");
-const count = 0;
+let count = 0;
 
 todoForm.on("submit", todoAdd);
 
@@ -26,17 +26,17 @@ function todoAdd(e) {
 }
 
 function todoCheck() {
-  // attr : html 태그에 직접 붙는 속성
-  // prop : html 객체가 가지고 있는 속성
+  // attr : html태그에 직접 붙는 속성
+  // prop : html객체가 가지고있는 속성
   if ($(this).prop("checked")) {
-    $(this).parent().attr("style", "color:lightgray");
+    $(this).parent().attr("style", "color:lightgray;");
   } else {
-    $(this).parent().attr("style", "color: black");
+    $(this).parent().attr("style", "color:black;");
   }
+
+  count = $("#todo-board li input:checked").length;
+  countText.html(count);
 }
-
-count = $("#todo-board li input: checked").length;
-
 function todoDelete() {
   $(this).parent().remove();
   count = $("#todo-board li input:checked").length;
